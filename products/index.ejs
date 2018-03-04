@@ -1,0 +1,39 @@
+---
+title: Products
+date: 2015-11-29 21:00:03
+layout: page
+---
+<!-- BEGIN SIDEBAR & CONTENT -->
+<% var categories = [
+	{ name: 'Feed Additives', key: 'feed_additives', imgs: ['choline_chloride', 'Dicalcium_Phosphate:monocalcium_phosphate', 'Lysine_HCL_98.5', 'Lysine_Sulphate_70'] },
+	{ name: 'Feed Ingredients', key: 'feed_ingredients', imgs: ['meat_bone_meal', 'alfa_alfa', 'fish_meal', 'poultry_meal'] },
+	{ name: 'Pet Food', key: 'pet_food', imgs: ['pet_can_food', 'pet_can_food2', 'pet_dry_food', 'pet_snack'] },
+]; %>
+<div class="row margin-bottom-40">
+	<div class="col-md-12 col-sm-12">
+		<div class="content-page">
+			<div class="filter-v1">
+				<ul class="mix-filter">
+					<li data-filter="all" class="filter active">All</li>
+					<% for (category of categories) { %>
+					<li data-filter="<%- category.key %>" class="filter"><%- category.name %></li>
+					<% } %>
+				</ul>
+				<div class="row mix-grid thumbnails">
+					<% for (category of categories) { %>
+						<% for (let img of category.imgs) { %>
+					<div class="col-md-4 col-sm-6 mix <%- category.key %> mix_all" style="display: block;  opacity: 1;">
+						<div class="mix-inner" style="width:360px;height:270px;background:url(/assets/<%- category.key %>/<%- img %>.jpg) no-repeat center;background-size:cover">
+							<!-- <img alt="" src="/assets/<%- category.key %>/<%- img %>.jpg" class="img-responsive"> -->
+							<div class="mix-details">
+								<h4><%- img.replace(/_/g, ' ') %></h4>
+							</div>
+						</div>
+					</div>
+						<% } %>
+					<% } %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
